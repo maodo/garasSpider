@@ -14,7 +14,7 @@ class gaaraasSpider(scrapy.Spider):
     def parse_details(self,response):
         item = GaaraasItem()
         proprietes = response.css('div.prop >div> span::text').extract()
-        item['prix'] = response.css('div.ad-price > span::text').extract_first()
+        item['prix'] = response.css('div.ad-price >span > span.price::text').extract_first()
         #item['moteur'] = proprietes[1]
         item['boite_de_vitesse'] = proprietes[3]
         item['kilometrage'] = proprietes[5]
